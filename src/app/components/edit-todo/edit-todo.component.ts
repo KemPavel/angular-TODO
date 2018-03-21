@@ -30,7 +30,7 @@ export class EditTodoComponent implements OnInit {
     this.data = new Observable(observer => {
       setTimeout(() => {
         observer.next(this.todos);
-      }, 1000);
+      }, 3000);
     });
 
     let subscription = this.data.subscribe( value => {

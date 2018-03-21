@@ -13,7 +13,11 @@
   <div>
     <ckeditor
       formControlName="description"
-      [config]="{uiColor: '#FFFFFF'}"
+      [config]="{
+        uiColor: '#FFFFFF',
+        allowedContent: true,
+        autoParagraph: false
+      }"
       [readonly]="false"
     ></ckeditor>
   </div>
