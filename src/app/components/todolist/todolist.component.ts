@@ -35,8 +35,8 @@ export class TodolistComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
-    console.log(typeof this.value2);
-    console.log(typeof this.value1);
+    // console.log(typeof this.value2);
+    // console.log(typeof this.value1);
   }
 
 }
