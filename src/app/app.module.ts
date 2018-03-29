@@ -14,6 +14,11 @@ import { BoldDirective } from './directives/bold.directive';
 import { ItalicDirective } from './directives/italic.directive';
 import { ColorDirective } from './directives/color.directive';
 import { WhileDirective } from './directives/while.directive';
+import { LoginComponent } from './components/login/login.component';
+
+//SERVICES
+import { DataService } from './services/data.service';
+import { LogService } from './services/log.service';
 
 import { CKEditorModule } from 'ng2-ckeditor';
 
@@ -28,7 +33,8 @@ import { CKEditorModule } from 'ng2-ckeditor';
     BoldDirective,
     ItalicDirective,
     ColorDirective,
-    WhileDirective
+    WhileDirective,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
@@ -36,7 +42,10 @@ import { CKEditorModule } from 'ng2-ckeditor';
     ReactiveFormsModule,
     CKEditorModule
   ],
-  providers: [],
+  providers: [
+    DataService,
+    LogService
+  ],
   bootstrap: [ AppComponent ]
 })
 export class AppModule { }
