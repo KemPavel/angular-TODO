@@ -1,4 +1,9 @@
 <div>
+  <div *ngFor="let user of users">
+    <h4>User name: {{user.name}}</h4>
+    <h4>User age: {{user.age}}</h4>
+  </div>
+  
   <pk-live-cycle #liveCycleComponent [value]="value" [val]="val"></pk-live-cycle>
   <input type="text" [(ngModel)]="value" (blur)="liveCycleComponent.onValueBlur()">
   <input type="text" [(ngModel)]="val">
