@@ -4,19 +4,22 @@
     <h4>User age: {{user.age}}</h4>
   </div>
   
+  <h1 pkItalic>{{date}}</h1>
+  
   <pk-live-cycle #liveCycleComponent [value]="value" [val]="val"></pk-live-cycle>
   <input type="text" [(ngModel)]="value" (blur)="liveCycleComponent.onValueBlur()">
   <input type="text" [(ngModel)]="val">
-  <pk-todolist 
+  <pk-todo-list 
     [value1]="varToChild1" 
     [value2]="varToChild2" 
     [value3]="varToChild3"
     [value4]="varToChild4"
     (onChanged)="onOutput($event)"
     [(todoName)]="name"
-  ></pk-todolist>
+  ></pk-todo-list>
 
-  <h1 pkItalic>{{date}}</h1>
+  <pk-edit-todo (add)="addTodo($event)" [reset]="addTodoSuccess$ | async"></pk-edit-todo>
+
 
   <h3 *pkWhile="condition">Structural directives testing = true string</h3>
   <h3 *pkWhile="!condition">Structural directives testing = false string</h3>

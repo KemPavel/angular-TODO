@@ -3,14 +3,18 @@ import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { Routes, RouterModule } from '@angular/router';
+import { EffectsModule } from '@ngrx/effects';
+import { StoreModule } from '@ngrx/store';
 
 // COMPONENTS
 import { AppComponent } from './app.component';
-import { TodolistComponent } from './components/todolist/todolist.component';
+import { TodoListComponent } from './components/todo-list/todo-list.component';
 import { HomeComponent } from './components/home/home.component';
 import { EditTodoComponent } from './components/edit-todo/edit-todo.component';
 import { LiveCycleComponent } from './components/live-cycle/live-cycle.component';
 import { AccessControlComponent } from './components/access-control/access-control.component';
+import { TodoItemComponent } from './components/todo-item/todo-item.component';
+import { FiltersComponent } from './components/filters/filters.component';
 
 // DIRECTIVES
 import { BoldDirective } from './directives/bold.directive';
@@ -23,9 +27,17 @@ import { LoginComponent } from './components/login/login.component';
 import { DataService } from './services/data.service';
 import { LogService } from './services/log.service';
 import { HttpService } from './services/http.service';
+import { TodosService } from './services/todos.service';
 
 // VENDORS
 import { CKEditorModule } from 'ng2-ckeditor';
+
+// REDUCERS
+import { todosReducer } from './store/todos.reducer';
+import { filtersReducer } from './store/filters.reducer';
+
+//EFFECTS
+import { TodosEffects } from './store/effects/todos.effects';
 
 
 const appRoutes: Routes = [
@@ -41,7 +53,7 @@ const appRoutes: Routes = [
 @NgModule({
   declarations: [
     AppComponent,
-    TodolistComponent,
+    TodoListComponent,
     HomeComponent,
     EditTodoComponent,
     LiveCycleComponent,
@@ -50,7 +62,9 @@ const appRoutes: Routes = [
     ColorDirective,
     WhileDirective,
     LoginComponent,
-    AccessControlComponent
+    AccessControlComponent,
+    TodoItemComponent,
+    FiltersComponent
   ],
   imports: [
     BrowserModule,
@@ -58,12 +72,21 @@ const appRoutes: Routes = [
     ReactiveFormsModule,
     CKEditorModule,
     HttpClientModule,
-    RouterModule.forRoot(appRoutes)
+    RouterModule.forRoot(appRoutes),
+    StoreModule.forRoot({ 
+      // user: userReducer,
+      filters: filtersReducer,
+      todos: todosReducer 
+    }),
+    EffectsModule.forRoot([
+      TodosEffects
+    ])
   ],
   providers: [
     DataService,
     LogService,
-    HttpService
+    HttpService,
+    TodosService
   ],
   bootstrap: [ AppComponent ]
 })

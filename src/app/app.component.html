@@ -2,5 +2,12 @@
   <h1>
     Welcome to {{ title }}!
   </h1>
+  <a routerLink="">Main screen</a>
+  <a routerLink="/home">Home</a>
+  <a routerLink="/todo">Todo</a>
+  <a routerLink="/access-control">Access control</a>
+
+  <button (click)="addTodo()">Add</button>
+  <button (click)="toggleTodo()">Toggle todo</button>
 </div>
 <router-outlet></router-outlet>

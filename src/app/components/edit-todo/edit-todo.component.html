@@ -1,3 +1,9 @@
+<h1>LEARNING NGRX part</h1>
+
+<input type="text" placeholder="Add todo..." [formControl]="control">
+<button (click)="onAdd(control.value)">Add</button>
+
+
 <div [formGroup]="todoForm">
 
   <p>is form dirty: {{todoForm.dirty}}</p>

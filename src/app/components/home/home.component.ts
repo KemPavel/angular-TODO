@@ -1,6 +1,11 @@
 import { Component, OnInit, OnChanges, SimpleChanges } from '@angular/core';
 import { HttpService } from '../../services/http.service';
+import { Store } from '@ngrx/store';
+import { Observable } from 'rxjs/Observable';
 import { User } from '../../models/user';
+import { TodosEffects } from '../../store/effects/todos.effects';
+import * as TodosActions from '../../store/todos.actions';
+import 'rxjs/add/operator/filter';
 
 @Component({
   selector: 'pk-home',
@@ -10,7 +15,7 @@ import { User } from '../../models/user';
 export class HomeComponent implements OnInit, OnChanges {
   private title: string = 'Put some title here';
   private things: Array<string> = [];
-  private date: string;
+  private date: string = new Date().toLocaleTimeString();;
   private name: string = 'test name for todo';
   private invalid: boolean = false;
   private condition: boolean = true;
@@ -26,13 +31,24 @@ export class HomeComponent implements OnInit, OnChanges {
 
   public value = 'my value';
   public val = 'my val';
-
+  // public todos : Observable<any>;
+  public addTodoSuccess$: Observable<any>;
   constructor(
-    private httpService: HttpService
-  ) { }
+    private httpService: HttpService,
+    private store: Store<any>,
+    private todosEffects: TodosEffects
+  ) {   
+    // this.store.dispatch(new TodosActions.GetTodo());
+    // this.todos = store.select("todos"); 
+    // this.addTodoSuccess$ = this.todosEffects.addTodo$.filter(( { type } ) => type === TodosActions.TodoActionTypes.ADD_TODO_SUCCESS);
+  }
 
   ngOnChanges(changes: SimpleChanges) {
     console.log(changes);
+  }
+
+  addTodo( todo ) {
+    this.store.dispatch(new TodosActions.AddTodo(todo));
   }
 
   ngOnInit() {
