@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
-import { Todo } from '../models/todos';
+import { Todo } from '../../models/todos';
 
 import { mapTo } from 'rxjs/operators';
 import 'rxjs/add/observable/timer'; 
@@ -19,7 +19,7 @@ export class TodosService {
 
   public getTodos(filter: string) {
     //TODO http GET request
-    return Observable.timer(1000).pipe(mapTo(this.getVisibleTodos(this.todos, filter));
+    return Observable.timer(1000).pipe(mapTo(this.getVisibleTodos(this.todos, filter)));
   }
 
   public addTodo(title): Observable<Todo> {

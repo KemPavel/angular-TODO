@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 import { Phone } from '../../models/phone';
-import { DataService } from '../../services/data.service';
+import { DataService } from '../../services/data/data.service';
 
 @Component({
   selector: 'pk-login',

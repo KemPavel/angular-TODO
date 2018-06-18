@@ -1,10 +1,10 @@
 import { Component, OnInit, OnChanges, SimpleChanges } from '@angular/core';
-import { HttpService } from '../../services/http.service';
+import { HttpService } from '../../services/http/http.service';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs/Observable';
 import { User } from '../../models/user';
-import { TodosEffects } from '../../store/effects/todos.effects';
-import * as TodosActions from '../../store/todos.actions';
+import { TodosEffects } from '../../effects/todos.effects';
+import * as TodosActions from '../../store/todos/todos.actions';
 import 'rxjs/add/operator/filter';
 
 @Component({

@@ -1,5 +1,5 @@
 import { Action } from '@ngrx/store';
-import { Todos } from '../models/todos';
+import { Todos } from '../../models/todos';
 import { FilterActionsUnion, FilterActionTypes } from './filters.actions';
 
 export function filtersReducer(state: string = 'SHOW_ALL', action: FilterActionsUnion) {

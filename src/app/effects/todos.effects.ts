@@ -2,8 +2,8 @@ import { Injectable } from "@angular/core";
 import { Actions, Effect, ofType } from "@ngrx/effects";
 import { Action, Store } from '@ngrx/store';
 import { Observable } from "rxjs";
-import { TodoActionTypes, AddTodo, GetTodo } from "../todos.actions";
-import { TodosService } from "../../services/todos.service";
+import { TodoActionTypes, AddTodo, GetTodo } from "../store/todos/todos.actions";
+import { TodosService } from "../services/todos/todos.service";
 
 import { switchMap, withLatestFrom } from 'rxjs/operators';
 

@@ -4,9 +4,9 @@ import { Store } from '@ngrx/store';
 
 import "rxjs/add/operator/take";
 
-import { TodosEffects } from '../../store/effects/todos.effects';
-import * as TodosActions from '../../store/todos.actions';
-import * as FilterActions from '../../store/filters.actions';
+import { TodosEffects } from '../../effects/todos.effects';
+import * as TodosActions from '../../store/todos/todos.actions';
+import * as FilterActions from '../../store/filters/filters.actions';
 import { Todos, Todo } from '../../models/todos';
 
 @Component({

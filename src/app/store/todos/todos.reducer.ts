@@ -1,5 +1,5 @@
 import { Action } from '@ngrx/store';
-import { Todos } from '../models/todos';
+import { Todos } from '../../models/todos';
 import { TodoActionsUnion, TodoActionTypes }  from './todos.actions';
 
 const initialState: Todos = {

@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 
-import { Phone } from '../models/phone';
+import { Phone } from '../../models/phone';
 
-import { LogService } from './log.service';
+import { LogService } from '../log/log.service';
 
 @Injectable()
 export class DataService {

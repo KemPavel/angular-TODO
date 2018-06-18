@@ -24,20 +24,20 @@ import { WhileDirective } from './directives/while.directive';
 import { LoginComponent } from './components/login/login.component';
 
 // SERVICES
-import { DataService } from './services/data.service';
-import { LogService } from './services/log.service';
-import { HttpService } from './services/http.service';
-import { TodosService } from './services/todos.service';
+import { DataService } from './services/data/data.service';
+import { LogService } from './services/log/log.service';
+import { HttpService } from './services/http/http.service';
+import { TodosService } from './services/todos/todos.service';
 
 // VENDORS
 import { CKEditorModule } from 'ng2-ckeditor';
 
 // REDUCERS
-import { todosReducer } from './store/todos.reducer';
-import { filtersReducer } from './store/filters.reducer';
+import { todosReducer } from './store/todos/todos.reducer';
+import { filtersReducer } from './store/filters/filters.reducer';
 
 //EFFECTS
-import { TodosEffects } from './store/effects/todos.effects';
+import { TodosEffects } from './effects/todos.effects';
 
 
 const appRoutes: Routes = [
