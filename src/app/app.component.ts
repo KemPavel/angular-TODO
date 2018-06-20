@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs/Observable';
-// import * as todoActions from './store/todos.actions';
+import { Router } from '@angular/router';
 
 interface AppState { 
   message: string;
@@ -17,17 +17,18 @@ export class AppComponent {
   public message$: Observable<string>;
 
   constructor(
-    private store: Store<AppState>
+    private store: Store<AppState>,
+    private router: Router
   ) { 
     this.message$ = this.store.select('message');
   }
 
-  // public addTodo(): void {
-  //   // this.store.dispatch({type: 'ADD_TODO'});
-  //   this.store.dispatch(new todoActions.AddTodo('title'));
-  // }
-
-  // public toggleTodo(): void {
-  //   this.store.dispatch({type: 'TOGGLE_TODO'});
-  // }
+  public goAccessControl(id: number) {
+    this.router.navigate(['/access-control', id], {
+      queryParams: {
+        product: 'iPhone',
+        price: 500
+      }
+    });
+  }
 }

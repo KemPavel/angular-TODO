@@ -29,6 +29,10 @@ import { LogService } from './services/log/log.service';
 import { HttpService } from './services/http/http.service';
 import { TodosService } from './services/todos/todos.service';
 
+// GUARDS
+import { AuthGuard } from './guards/auth.guard';
+import { PendingChangesGuard } from './guards/pending-changes.guard';
+
 // VENDORS
 import { CKEditorModule } from 'ng2-ckeditor';
 
@@ -38,16 +42,24 @@ import { filtersReducer } from './store/filters/filters.reducer';
 
 //EFFECTS
 import { TodosEffects } from './effects/todos.effects';
+import { UserDetailsComponent } from './components/user-details/user-details.component';
+import { UserAccessComponent } from './components/user-access/user-access.component';
 
+
+const accessControlChildRoutes: Routes = [
+  { path: 'details', component: UserDetailsComponent, canActivate: [ AuthGuard ], canDeactivate: [ PendingChangesGuard ] },
+  { path: 'access', component: UserAccessComponent, canActivate: [ AuthGuard ], canDeactivate: [ PendingChangesGuard ] }
+];
 
 const appRoutes: Routes = [
-  { path: '', component: AppComponent },
-  { path: 'home', component: HomeComponent },
+  { path: '', component: HomeComponent },
   { path: 'todo', component: EditTodoComponent },
-  { path: 'access-control', component: AccessControlComponent },
+  { path: 'access-control', component: AccessControlComponent, canActivate: [ AuthGuard ], canDeactivate: [ PendingChangesGuard ] },
+  { path: 'access-control/:id', component: AccessControlComponent, canActivate: [ AuthGuard ], canDeactivate: [ PendingChangesGuard ] },
+  { path: 'access-control/:id', component: AccessControlComponent, children: accessControlChildRoutes },
   { path: '**', redirectTo: '/'}
   // { path: '**', component: NotFoundComponent }
-]
+];
 
 
 @NgModule({
@@ -64,7 +76,9 @@ const appRoutes: Routes = [
     LoginComponent,
     AccessControlComponent,
     TodoItemComponent,
-    FiltersComponent
+    FiltersComponent,
+    UserDetailsComponent,
+    UserAccessComponent
   ],
   imports: [
     BrowserModule,
@@ -86,7 +100,9 @@ const appRoutes: Routes = [
     DataService,
     LogService,
     HttpService,
-    TodosService
+    TodosService, 
+    AuthGuard,
+    PendingChangesGuard
   ],
   bootstrap: [ AppComponent ]
 })
