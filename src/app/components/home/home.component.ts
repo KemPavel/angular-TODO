@@ -6,6 +6,8 @@ import { User } from '../../models/user';
 import { TodosEffects } from '../../effects/todos.effects';
 import * as TodosActions from '../../store/todos/todos.actions';
 import 'rxjs/add/operator/filter';
+import { map } from 'rxjs/operators';
+import "rxjs/add/observable/interval";
 
 @Component({
   selector: 'pk-home',
@@ -21,6 +23,8 @@ export class HomeComponent implements OnInit, OnChanges {
   private condition: boolean = true;
   private users: User[];
 
+  public phoneAsync: Observable<string>;
+  public phones = ["iPhone 7", "LG G 5", "Honor 9", "Idol S4", "Nexus 6P"];
   public varToChild1: string = 'Test varaible';
   public varToChild2: number = 42;
   public varToChild3: number = 84;
@@ -38,9 +42,7 @@ export class HomeComponent implements OnInit, OnChanges {
     private store: Store<any>,
     private todosEffects: TodosEffects
   ) {   
-    // this.store.dispatch(new TodosActions.GetTodo());
-    // this.todos = store.select("todos"); 
-    // this.addTodoSuccess$ = this.todosEffects.addTodo$.filter(( { type } ) => type === TodosActions.TodoActionTypes.ADD_TODO_SUCCESS);
+    this.showPhoneAsync();
   }
 
   ngOnChanges(changes: SimpleChanges) {
@@ -59,6 +61,10 @@ export class HomeComponent implements OnInit, OnChanges {
       this.varToChild4.val++;
       console.log(this.varToChild4.val);
     }, 5000);
+  }
+
+  private showPhoneAsync(): void {
+    this.phoneAsync = Observable.interval(500).pipe(map((i:number)=> this.phones[i]));
   }
 
   private onOutput(event: string): void {

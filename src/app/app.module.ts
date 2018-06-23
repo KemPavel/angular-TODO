@@ -23,6 +23,10 @@ import { ColorDirective } from './directives/color.directive';
 import { WhileDirective } from './directives/while.directive';
 import { LoginComponent } from './components/login/login.component';
 
+// PIPES
+import { FactorialPipe } from './pipes/factorial.pipe';
+import { JoinPipe } from './pipes/join.pipe';
+
 // SERVICES
 import { DataService } from './services/data/data.service';
 import { LogService } from './services/log/log.service';
@@ -78,7 +82,9 @@ const appRoutes: Routes = [
     TodoItemComponent,
     FiltersComponent,
     UserDetailsComponent,
-    UserAccessComponent
+    UserAccessComponent,
+    FactorialPipe,
+    JoinPipe
   ],
   imports: [
     BrowserModule,

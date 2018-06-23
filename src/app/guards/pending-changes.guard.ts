@@ -6,7 +6,7 @@ export interface ComponentCanDeactivate {
 }
 
 export class PendingChangesGuard implements CanDeactivate<ComponentCanDeactivate> {
-  public canDeactivate(component: ComponentCanDeactivate): Observable<boolean> | boolean {
+  canDeactivate(component: ComponentCanDeactivate): Observable<boolean> | boolean {
     return component.canDeactivate ? component.canDeactivate() : true;
   }
 }
