@@ -39,7 +39,7 @@ export class TodoListComponent implements OnInit {
   private _value4: number;
 
 
-  @Output() onChanged = new EventEmitter<string>();
+  @Output() onChanged = new EventEmitter<string | number>();
   @Output() todoNameChange = new EventEmitter<string>();
 
   constructor( private store: Store<any>, private todosEffects : TodosEffects) {
@@ -63,12 +63,12 @@ export class TodoListComponent implements OnInit {
     this.store.dispatch(new TodosActions.GetTodo());
   }
 
-  private onTodoNameChange(model: string): void {
+  public onTodoNameChange(model: string): void {
     this.todoName = model;
     this.todoNameChange.emit(model);
   }
 
-  private change(value: string): void {
+  public change(value: string | number): void {
     this.onChanged.emit(value);
   }
 

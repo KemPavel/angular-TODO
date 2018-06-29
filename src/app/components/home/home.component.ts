@@ -15,14 +15,13 @@ import "rxjs/add/observable/interval";
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit, OnChanges {
-  private title: string = 'Put some title here';
-  private things: Array<string> = [];
-  private date: string = new Date().toLocaleTimeString();;
-  private name: string = 'test name for todo';
-  private invalid: boolean = false;
-  private condition: boolean = true;
-  private users: User[];
-
+  public title: string = 'Put some title here';
+  public things: Array<string> = [];
+  public date: string = new Date().toLocaleTimeString();;
+  public name: string = 'test name for todo';
+  public invalid: boolean = false;
+  public condition: boolean = true;
+  public users: User[];
   public phoneAsync: Observable<string>;
   public phones = ["iPhone 7", "LG G 5", "Honor 9", "Idol S4", "Nexus 6P"];
   public varToChild1: string = 'Test varaible';
@@ -63,25 +62,25 @@ export class HomeComponent implements OnInit, OnChanges {
     }, 5000);
   }
 
-  private showPhoneAsync(): void {
+  public showPhoneAsync(): void {
     this.phoneAsync = Observable.interval(500).pipe(map((i:number)=> this.phones[i]));
   }
 
-  private onOutput(event: string): void {
+  public onOutput(event: string): void {
 
     // console.log(typeof event);
   }
 
-  private toggleDirective(): void {
+  public toggleDirective(): void {
     this.condition = !this.condition;
   }
 
-  private addThing(thing: string): void {
+  public addThing(thing: string): void {
     this.invalid = !this.invalid;
     this.things.push(thing);
   }
 
-  private clearThings(): void {
+  public clearThings(): void {
     this.things = [];
   }
 }

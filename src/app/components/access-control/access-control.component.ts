@@ -12,9 +12,9 @@ import { PendingChangesGuard } from '../../guards/pending-changes.guard';
 export class AccessControlComponent implements OnInit, PendingChangesGuard {
   public isSaved: boolean = false;
   
-  private id: number;
-  private queryProduct: string;
-  private queryPrice: string;
+  public id: number;
+  public queryProduct: string;
+  public queryPrice: string;
   private querySubsctiption: Subscription;
   private routeSubscription: Subscription;
 
